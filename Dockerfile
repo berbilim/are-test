@@ -1,14 +1,6 @@
-FROM python:2.7-alpine
-
-RUN mkdir /app
+FROM python:3.10
+EXPOSE 5000
 WORKDIR /app
-
-COPY requirements.txt requirements.txt
-RUN pip install -r requirements.txt
-
+RUN pip install flask
 COPY . .
-
-LABEL maintainer="WebMagic Informatica <info@webmagicinformatica.com>" \
-      version="1.0"
-
-CMD flask run --host=0.0.0.0 --port=5000
+CMD ["flask", "run", "--host", "0.0.0.0"]
